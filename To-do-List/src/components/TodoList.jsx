@@ -4,7 +4,7 @@ import '../components/Todo.css';
 
 function TodoList() {
     const [input, setInput] = useState('');
-    const [tasks, setTasks] = useState(["Work", "Code","Eat","Gym"]);
+    const [tasks, setTasks] = useState([]);
     const [editIndex, setEditIndex] = useState(null);
     const [editText, setEditText] = useState('');
 
@@ -87,13 +87,14 @@ function TodoList() {
                                 ) : (
                                     <>
                                     <div>
-                                    <span>{i + 1}{"."}</span>
-                                    </div>
-                                    <div>
+                                    <span className=''>{i + 1}{"."}</span>
                                     <span  className='txt'>{task}</span>
                                     </div>
+                                    <div>
+                                    
+                                    </div>
                                         
-                                        <div className=''>
+                                        <div className='btn'>
                                         <button  onClick={() => editTask(i)}>Edit</button>
                                         <button className='btn' onClick={() => deleteTask(i)}>Delete</button>
                                         </div>
