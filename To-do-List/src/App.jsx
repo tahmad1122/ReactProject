@@ -12,13 +12,15 @@ function App() {
   console.log(isDark);
   
   return (
-
+    <>
+     <div className="app1">
     <main className={isDark ? 'app dark' : 'app'}>
     <Header isDark={isDark} setIsDark={setIsDark} />
     <TodoList/>
-    <Footer />
   </main>
-  
+  <Footer/>
+  </div>
+  </>
   )
 }
 
