@@ -1,0 +1,161 @@
+/* container (the white rounded card) */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+body{
+  background:#86b7fe;
+}
+.waether {
+  background: #f7f7f7;
+  border-radius: 24px;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  
+  text-align: center;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.heading{
+  font-size: 32px;
+    margin: 0;
+
+    margin-bottom: 17px;
+}
+/* search bar */
+.search {
+  padding: 6px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  appearance: none;
+  border-radius: 4px;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  :focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+  }
+}
+
+.btn {
+  margin-left: 8px;
+  cursor: pointer;
+  outline: 0;
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 16px;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+  :hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+  }
+}
+
+.srchinput {
+  display: flex;
+}
+
+/* day of week */
+.day-name {
+  margin: 4px 0;
+  font-size: 36px;
+  color: #555;
+  font-family: monospace;
+  font-weight: bold;
+  margin-top: 12px;
+}
+
+/* weather icon */
+.img {
+
+  width: 70px;
+    height: 70px;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+    font-size: 30px;
+}
+
+
+/* weather description */
+/* .waether p {
+  margin: 4px 0;
+  color: #777;
+  text-transform: capitalize;
+} */
+
+ .temp {
+  
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgb(240, 207, 25);
+    margin: 0.25rem 0;
+}
+
+ .name {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.weather-description {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 17px;
+  color: #333;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+/* ——— remove any page-wide gradient — simply let your card sit on whatever background you already have — */
+
+
+/* ——— Big temperature & city styling — */
+/* .waether .temp {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffe066;
+  
+  margin: 0.25rem 0;
+} */
+
+
+/* ——— Icon + description on one line — */
+
+/* .waether .weather-description {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+  color: #333;
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+} */
+
