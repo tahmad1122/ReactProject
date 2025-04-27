@@ -16,7 +16,7 @@ function TodoList() {
         if (editIndex !== null && editInputRef.current) {
             editInputRef.current.focus();
         }
-    }, );
+    },);
 
 
     const addTask = () => {
@@ -24,14 +24,15 @@ function TodoList() {
             // console.log("Enter task...");
             // alert("Enter your task...");
             setError('**Please enter your task..');
-            setTimeout(() => {
-                setError('');
-            }, 5000);
-            
+            // setTimeout(() => {
+            //     setError('');
+            // }, 5000);
+
 
         } else {
             setTasks([...tasks, input])
             setInput('');
+            setError("");
         }
 
     }
@@ -55,7 +56,7 @@ function TodoList() {
 
     }
 
-   return (
+    return (
         <div className='container'>
             <h1 className='heading'>Add your task here</h1>
             <div className='input-group'>
@@ -65,40 +66,40 @@ function TodoList() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
-                
+
                 <button onClick={addTask}>Add Task</button>
-                
+
                 <ul>
-                <span> {error && <p style={{ color: 'red' }}>{error}</p>}</span>
+                    <span> {error && <p style={{ color: 'red' }}>{error}</p>}</span>
                     {
                         tasks.map((task, i) =>
                             <li key={i}>
                                 {editIndex === i ? (
                                     <>
-                                    <span>{i + 1}</span>
+                                        <span>{i + 1}</span>
                                         <input className='inputtxt'
                                             ref={editInputRef}
                                             value={editText}
                                             onChange={(e) => setEditText(e.target.value)}
                                         />
-                                        
+
                                         <button onClick={saveTask}>Save</button>
                                     </>
                                 ) : (
                                     <>
-                                    <div>
-                                    <span className=''>{i + 1}{"."}</span>
-                                    <span  className='txt'>{task}</span>
-                                    </div>
-                                    <div>
-                                    
-                                    </div>
-                                        
-                                        <div className='btn'>
-                                        <button  onClick={() => editTask(i)}>Edit</button>
-                                        <button className='btn' onClick={() => deleteTask(i)}>Delete</button>
+                                        <div>
+                                            <span className=''>{i + 1}{"."}</span>
+                                            <span className='txt'>{task}</span>
                                         </div>
-                                        
+                                        <div>
+
+                                        </div>
+
+                                        <div className='btn'>
+                                            <button onClick={() => editTask(i)}>Edit</button>
+                                            <button className='btn' onClick={() => deleteTask(i)}>Delete</button>
+                                        </div>
+
                                     </>
                                 )}
                             </li>
@@ -107,7 +108,7 @@ function TodoList() {
                 </ul>
 
             </div>
-           
+
         </div>
     )
 }
