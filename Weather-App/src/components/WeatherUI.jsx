@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import '../components/weather.css';
+import air from '../assets/air.png';
+import humidity from '../assets/humidity.png';
+import wind from '../assets/wind.png';
 
 function WeatherUI() {
 
@@ -15,25 +18,26 @@ function WeatherUI() {
     async function weatherAPi() {
 
         try {
-           if (input==="") {
-            
-            console.log("enter");
-            setError("Please enter city name");
-            // setTimeout(() => {
-            //     setError('');
-            // }, 5000);
-            
-           } else {
-            const response = await fetch(apiUrl)
-            const data = await response.json();
-            if (!response.ok) throw new Error('City not found');
-            setWeather(data)
-            console.log(data);
-            setError('');
-            // console.log(data.name);
-            // console.log(data.main.temp);
-            
-           }
+            if (input === "") {
+
+                // console.log("enter");
+                setError("Please enter city name");
+                // setTimeout(() => {
+                //     setError('');
+                // }, 5000);
+                setWeather("");
+
+            } else {
+                const response = await fetch(apiUrl)
+                const data = await response.json();
+                if (!response.ok) throw new Error('City not found');
+                setWeather(data)
+                // console.log(data);
+                setError('');
+                // console.log(data.name);
+                // console.log(data.main.temp);
+
+            }
 
         } catch (err) {
             setError(err.message);
@@ -42,10 +46,10 @@ function WeatherUI() {
     }
 
     // Convert Kelvin to Celsius
-    const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(2);
+    const kelvinToCelsius = (kelvin) => (kelvin - 273.15).toFixed(0);
 
-      // Get current day name (e.g., "Monday")
-      const getDayName = () => {
+    // Get current day name (e.g., "Monday")
+    const getDayName = () => {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const today = new Date();
         return daysOfWeek[today.getDay()];
@@ -61,33 +65,53 @@ function WeatherUI() {
                         onChange={(e) => setInput(e.target.value)}
                     />
                     <button className='btn' onClick={weatherAPi}>search</button>
-                   
+
                 </div>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {error && <p className="error-message">{error}</p>}
                 {
                     weather && <>
-                    <p className='day-name'>{getDayName()}</p>
-                     <p className='temp'>{kelvinToCelsius(weather.main.temp)} °C</p>
-                     <p className='name'>{weather.name}{" , "}{weather.sys.country}</p>
-                     
-                     <div>
-                     <img className='img'
-                            src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}.png`}
-                            alt={weather.weather[0].description}
-                        />
-                        <p className='weather-description'>{weather.weather[0].description}</p>
-                     </div>
-                        
-                        <p className="humidity">Humidity{weather.main.humidity}</p>
-                        <p className="wind-speed">Speed{weather.wind.speed}</p>
-                        <p className="air-pressure">Air Pressure{weather.main.pressure}</p>
+                        <p className='day-name'>{getDayName()}</p>
+                        <p className='temp'>{kelvinToCelsius(weather.main.temp)}°C</p>
+                        <p className='name'>{weather.name}{" , "}{weather.sys.country}</p>
 
-                       
-                        
+                        <div className='imgdes'>
+                            <img className='img'
+                                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                                alt={weather.weather[0].description}
+                            />
+                            <p className='wdescription'>{weather.weather[0].description}</p>
+                        </div>
+
+
+
+                        <div className="col">
+                            <div className="col1">
+                                <div className="card">
+                                    <img src={humidity} alt="Humidity" className="icon" />
+                                    <p className="value">{weather.main.humidity}%</p>
+                                    <p className="label">Humidity</p>
+                                </div>
+
+                                <div className="card">
+                                    <img src={wind} alt="Wind" className="icon" />
+                                    <p className="value">{weather.wind.speed} mps</p>
+                                    <p className="label">Wind</p>
+                                </div>
+
+                                <div className="card">
+                                    <img src={air} alt="Air Pressure" className="icon" />
+                                    <p className="value">{weather.main.pressure}</p>
+                                    <p className="label">Air</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
 
                     </>
                 }
-                
+
             </div>
         </>
     )
